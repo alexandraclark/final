@@ -36,6 +36,8 @@
 # Have fun!
 
 Guest
+  is_user: boolean
+  user_id: integer
   first_name: string
   last_name: string
   email: string
@@ -70,3 +72,4 @@ Supply
   event_id: integer
   title: string
   price: integer
+  assigned_to: integer
