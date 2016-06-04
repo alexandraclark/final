@@ -3,13 +3,13 @@ Guest
   first_name: string
   last_name: string
   email: string
-  phone: integer
+  phone: string
 
 Invitation
   guest_id: integer
   event_id: integer
   RSVP: boolean
-  attending: string
+  attending: boolean
 
 Event
   title: string
@@ -24,22 +24,25 @@ List
 
 Task
   list_id: integer
+  item: string
   due_date: integer
   tag: string
-  assigned_to: integer
+  user_id: integer
   completed: boolean
   completed_date: integer
 
 Supply
   event_id: integer
   title: string
+  quantity: integer
   price: integer
-  assigned_to: integer
+  user_id: integer
   purchase_url: string
   purchased: boolean
 
 User
   username: string
   email: string
-  password: string
   guest_id: integer   # if user is a guest
+  password: string
+  password_confirmation: string
