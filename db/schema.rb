@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 0) do
 
   create_table "events", force: :cascade do |t|
     t.string  "title"
-    t.string  "date"
+    t.text    "date"
     t.text    "details"
     t.string  "image_url"
     t.integer "budget"
@@ -56,26 +56,26 @@ ActiveRecord::Schema.define(version: 0) do
     t.string  "title"
     t.integer "quantity"
     t.integer "price"
-    t.integer "user_id"
     t.string  "purchase_url"
     t.boolean "purchased",    default: false
+    t.integer "guest_id"
   end
 
   add_index "supplies", ["event_id"], name: "index_supplies_on_event_id", using: :btree
-  add_index "supplies", ["user_id"], name: "index_supplies_on_user_id", using: :btree
+  add_index "supplies", ["guest_id"], name: "index_supplies_on_guest_id", using: :btree
 
   create_table "tasks", force: :cascade do |t|
     t.integer "list_id"
     t.string  "item"
-    t.string  "due_date"
+    t.text    "due_date"
     t.string  "tag"
-    t.integer "user_id"
     t.boolean "completed",      default: false
     t.integer "completed_date"
+    t.integer "guest_id"
   end
 
+  add_index "tasks", ["guest_id"], name: "index_tasks_on_guest_id", using: :btree
   add_index "tasks", ["list_id"], name: "index_tasks_on_list_id", using: :btree
-  add_index "tasks", ["user_id"], name: "index_tasks_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string  "username"

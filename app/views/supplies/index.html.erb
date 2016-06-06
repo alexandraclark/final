@@ -1,0 +1,9 @@
+<h1>Supply List</h1>
+<div class="col-md-8">
+<% @events.each do |event| %>
+<h4> <%= event.title %></h4>
+  <%= render event.supplies.order(:title) %>
+  <%= link_to "+ add a new supply", new_supply_path(:event => event.title, :event_id => event.id) %>
+  <hr>
+<% end %>
+</div>

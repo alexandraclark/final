@@ -1,11 +1,21 @@
 <ul>
 <% if task %>
 
-  <%= form_for task do |form| %>
-    <%= form.check_box :completed %>
-    <%= form.label task.item %><% if task.due_date %> (due: <%= task.due_date %>) <% end %>
+  <!-- onclick, checkbox changes database -->
+  <%= form_for task, :id => task.id do |form| %>
+    <% if task.completed == true %>
+      <%= form.check_box :completed, :onclick => "$('#edit_task_" + task.id.to_s() + "').submit()" %>
+      <%= form.label task.item, :class => "checked-task" %><% if task.due_date %> (due: <%= task.due_date %>) <% end %>
+      <%= link_to "delete", task_path(task.id), :method => :delete, :class => "pull-right action-link" %>
+      <%= link_to "assign/edit", edit_task_path(task.id), :class => "pull-right action-link" %>
+    <% else %>
+      <%= form.check_box :completed, :onclick => "$('#edit_task_" + task.id.to_s() + "').submit()" %>
+      <%= form.label task.item %><% if task.due_date %> (due: <%= task.due_date %>) <% end %>
+      <%= link_to "delete", task_path(task.id), :method => :delete, :class => "pull-right action-link" %>
+      <%= link_to "assign/edit", edit_task_path(task.id), :class => "pull-right action-link" %>
     <% end %>
-  <!-- <div class="checkbox" id="<%=task.id%>"><label><input type="checkbox" value=""><%= task.item %> -->
-    <!-- <% if task.due_date %> (due: <%= task.due_date %>) <% end %> </label> -->
+
+  <% end %>
+
 <% end %>
 </ul>

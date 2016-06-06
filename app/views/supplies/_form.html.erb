@@ -1,0 +1,32 @@
+<%= form_for @supply do |form| %>
+
+<% if params[:event_id] %>
+<%= form.hidden_field :event_id, :value => params[:event_id] %>
+<% end %>
+
+<%= form.hidden_field :if_patch, :value => true %>
+
+  <p><%= form.label :title %>
+  <br>
+  <%= form.text_field :title, size: 80, autofocus: true, required: true %></p>
+
+  <p><%= form.label :quantity, "Quantity" %>
+  <br>
+  <%= form.number_field :quantity %>
+
+  <p><%= form.label :price, "Price" %>
+  <br>
+  <%= form.number_field :price %></p>
+
+  <p><%= form.label :guest_id, "Assigned to" %>
+    <br>
+  <%= form.collection_select :guest_id, Guest.all.order('last_name'), :id, :full_name, :include_blank => true %></p>
+  </p>
+
+  <p><%= form.label :purchase_url, "Purchase URL" %>
+  <br>
+  <%= form.url_field :purchase_url %></p>
+
+  <%= form.submit %>
+
+<% end %>

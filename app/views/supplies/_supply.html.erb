@@ -1,0 +1,28 @@
+<ul>
+<% if supply %>
+
+  <!-- onclick, checkbox changes database -->
+  <%= form_for supply, :id => supply.id do |form| %>
+    <% if supply.purchased == true %>
+      <%= link_to "delete", supply_path(supply.id), :method => :delete, :class => "pull-right action-link" %>
+      <%= link_to "assign/edit", edit_supply_path(supply.id), :class => "pull-right action-link" %>
+      <%= form.check_box :purchased, :onclick => "$('#edit_supply_" + supply.id.to_s() + "').submit()" %>
+      <%= form.label supply.title, :class => "checked-supply" %>
+      <% if supply.quantity %>
+        <div class="pull-right quantity" display="inline-block">(quantity: <%= supply.quantity %>)</div>
+      <% end %>
+    <% else %>
+      <%= link_to "delete", supply_path(supply.id), :method => :delete, :class => "pull-right action-link" %>
+      <%= link_to "assign/edit", edit_supply_path(supply.id), :class => "pull-right action-link" %>
+      <%= form.check_box :purchased, :onclick => "$('#edit_supply_" + supply.id.to_s() + "').submit()" %>
+      <%= form.label supply.title %>
+      <% if supply.quantity %>
+        <div class="pull-right quantity" display="inline-block">(quantity: <%= supply.quantity %>)</div>
+      <% end %>
+
+    <% end %>
+
+  <% end %>
+
+<% end %>
+</ul>

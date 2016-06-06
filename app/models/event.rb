@@ -6,4 +6,6 @@ class Event < ActiveRecord::Base
   has_one :list
   has_many :tasks, :through => :list
 
+  has_many :supplies
+
 end

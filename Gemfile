@@ -1,8 +1,10 @@
 source 'https://rubygems.org'
 
 # gem 'bootstrap', '~> 4.0.0.alpha3'
-gem 'bootstrap-sass', '~> 3.3.6'
+gem 'bootstrap-sass', '~> 3.3.6', :path => "assets/"
 gem 'autoprefixer-rails'
+
+gem 'font-awesome-sass'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'

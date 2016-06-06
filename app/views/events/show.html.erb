@@ -3,6 +3,7 @@
 </h2>
 
 <div class="event-details">
+  <div class="row">
   <p><%= image_tag @event.image_url, class: "event-image" %></p>
 
   <div>
@@ -11,9 +12,11 @@
     <p> Details: <%= @event.details %></p>
   </div>
 </div>
+</div>
 
-<h3>Guests</h3>
-<div class="event-guests">
+<div class="row">
+<div class="event-guests col-md-6">
+  <h3>Guests</h3>
   <table class="table">
     <thead>
       <th>Name</th>
@@ -27,5 +30,9 @@
   </table>
 </div>
 
+<div class="event-tasks col-md-6">
 <h3>Tasks</h3>
+<hr>
 <%= render partial: 'tasks/task', collection: @event.tasks, as: :task %>
+</div>
+</div>

@@ -26,7 +26,7 @@ may = Guest.create(:first_name => "May", :last_name => "Day", :email => "mday@ex
 
 pyjama_party = Event.new
 pyjama_party.title = "Pyjama Party"
-pyjama_party.date = "12-31-1989"
+pyjama_party.date = "1989-12-31"
 pyjama_party.details = "A pyjama party for the turn of the decade!"
 pyjama_party.image_url = "pyjama_party.jpg"
 pyjama_party.budget = "50"
@@ -34,7 +34,7 @@ pyjama_party.save
 
 class_reunion = Event.new
 class_reunion.title = "Class Reunion"
-class_reunion.date = "08-01-2132"
+class_reunion.date = "2132-08-01"
 class_reunion.details = "Getting the old crew back together!"
 class_reunion.image_url = "class_reunion.jpg"
 class_reunion.budget = "6000"
@@ -42,7 +42,7 @@ class_reunion.save
 
 networking_brunch = Event.new
 networking_brunch.title = "Networking Brunch"
-networking_brunch.date = "07-07-2017"
+networking_brunch.date = "2017-07-07"
 networking_brunch.details = "Trade secrets. Mutual connections. Bottomless mimosas."
 networking_brunch.image_url = "networking_brunch.jpg"
 networking_brunch.budget = nil
@@ -70,24 +70,24 @@ pyjama_list = List.create(title: "Pyjama Party To-do", event_id: pyjama_party.id
 class_list = List.create(title: "Class Reunion Planning", event_id: class_reunion.id)
 networking_list = List.create(title: "Networking Brunch Milestones", event_id: networking_brunch.id)
 
-Task.create(list_id: pyjama_list.id, item: "ask everyone to vote on movies", due_date: "01-01-2017", tag: "movies", user_id: nil, completed: false, completed_date: nil)
-Task.create(list_id: pyjama_list.id, item: "rent movies", due_date: nil, tag: "movies", user_id: nil, completed: false, completed_date: nil)
-Task.create(list_id: pyjama_list.id, item: "borrow mom's Betamax player", due_date: nil, tag: "snacks", user_id: chris.id, completed: false, completed_date: nil)
+Task.create(list_id: pyjama_list.id, item: "ask everyone to vote on movies", due_date: "2017-01-01", tag: "movies", guest_id: nil, completed: false, completed_date: nil)
+Task.create(list_id: pyjama_list.id, item: "rent movies", due_date: nil, tag: "movies", guest_id: nil, completed: false, completed_date: nil)
+Task.create(list_id: pyjama_list.id, item: "borrow mom's Betamax player", due_date: nil, tag: "snacks", guest_id: chris.id, completed: false, completed_date: nil)
 
-Task.create(list_id: class_list.id, item: "rent venue", due_date: nil, tag: "venue", user_id: nil, completed: false, completed_date: nil)
+Task.create(list_id: class_list.id, item: "rent venue", due_date: nil, tag: "venue", guest_id: nil, completed: false, completed_date: nil)
 
-Task.create(list_id: networking_list.id, item: "reserve restaurant back room", due_date: nil, tag: "venue", user_id: nil, completed: false, completed_date: nil)
-Task.create(list_id: networking_list.id, item: "vet everyone's dietary preferences", due_date: nil, tag: nil, user_id: nil, completed: false, completed_date: nil)
+Task.create(list_id: networking_list.id, item: "reserve restaurant back room", due_date: nil, tag: "venue", guest_id: nil, completed: false, completed_date: nil)
+Task.create(list_id: networking_list.id, item: "vet everyone's dietary preferences", due_date: nil, tag: nil, guest_id: nil, completed: false, completed_date: nil)
 
-Supply.create(event_id: pyjama_party.id, title: "microwave popcorn (2 boxes)", quantity: nil, price: 10, user_id: nil, purchase_url: nil, purchased: true)
-Supply.create(event_id: pyjama_party.id, title: "plates & bowls (large box)", quantity: 1, price: nil, user_id: chris.id, purchase_url: nil, purchased: false)
+Supply.create(event_id: pyjama_party.id, title: "microwave popcorn (2 boxes)", quantity: nil, price: 10, guest_id: nil, purchase_url: nil, purchased: true)
+Supply.create(event_id: pyjama_party.id, title: "plates & bowls (large box)", quantity: 1, price: nil, guest_id: chris.id, purchase_url: nil, purchased: false)
 
-Supply.create(event_id: class_reunion.id, title: "printed fliers", quantity: 35, price: 10, user_id: nil, purchase_url: nil, purchased: true)
+Supply.create(event_id: class_reunion.id, title: "printed fliers", quantity: 35, price: 10, guest_id: nil, purchase_url: nil, purchased: true)
 
-Supply.create(event_id: networking_brunch.id, title: "orange juice", quantity: 5, price: 10, user_id: nil, purchase_url: nil, purchased: true)
-Supply.create(event_id: networking_brunch.id, title: "champagne", quantity: 5, price: 200, user_id: nil, purchase_url: nil, purchased: false)
-Supply.create(event_id: networking_brunch.id, title: "branded business card holders", quantity: 10, price: 100, user_id: nil, purchase_url: nil, purchased: false)
-Supply.create(event_id: networking_brunch.id, title: "name tags", quantity: 10, price: 30, user_id: nil, purchase_url: nil, purchased: true)
+Supply.create(event_id: networking_brunch.id, title: "orange juice", quantity: 5, price: 10, guest_id: nil, purchase_url: nil, purchased: true)
+Supply.create(event_id: networking_brunch.id, title: "champagne", quantity: 5, price: 200, guest_id: nil, purchase_url: nil, purchased: false)
+Supply.create(event_id: networking_brunch.id, title: "branded business card holders", quantity: 10, price: 100, guest_id: nil, purchase_url: nil, purchased: false)
+Supply.create(event_id: networking_brunch.id, title: "name tags", quantity: 10, price: 30, guest_id: nil, purchase_url: nil, purchased: true)
 
 User.create username: "imalcolm", email: "imalcolm@example.org", guest_id: ian.id, password: "lifefindsaway",  password_confirmation: "lifefindsaway"
 User.create username: "eripley", email: "eripley@example.org", guest_id: ellen.id, password: "noonecanhearyou",  password_confirmation: "noonecanhearyou"

@@ -1,7 +1,11 @@
 <h1>Your Tasks</h1>
+<div class="col-md-8">
 <% @events.each do |event| %>
 <h4> <%= event.title %></h4>
-<div>
-  <%= render event.tasks %>
+<div class="task-box">
+  <%= render event.tasks.order(due_date: :asc) %>
+  <%= link_to "+ add a new task", new_task_path(:event => event.title, :event_id => event.id) %>
 </div>
+<hr>
 <% end %>
+</div>

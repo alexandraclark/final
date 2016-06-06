@@ -1,4 +1,6 @@
-<center><h1><%= link_to 'Send an invitation!', new_guest_path %></h1></center>
+<center><div class="invite-link-box"><h1>
+  <%= link_to 'Send an invitation!', new_guest_path, :class => "invite-link" %>
+</h1></div></center>
 
 <div>
   <% @events.each do |event| %>
