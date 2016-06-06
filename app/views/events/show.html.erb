@@ -1,0 +1,31 @@
+<h2>
+  <%= @event.title %>
+</h2>
+
+<div class="event-details">
+  <p><%= image_tag @event.image_url, class: "event-image" %></p>
+
+  <div>
+    <p>Budget: $<%= @event.budget %></p>
+    <p>Date: <%= @event.date %></p>
+    <p> Details: <%= @event.details %></p>
+  </div>
+</div>
+
+<h3>Guests</h3>
+<div class="event-guests">
+  <table class="table">
+    <thead>
+      <th>Name</th>
+      <th>RSVP?</th>
+      <th>Attending?</th>
+      <th></th>
+    </thead>
+    <tbody>
+      <%= render partial: 'guests/guest', collection: @event.guests, as: :guest, locals: {event: @event} %>
+    </tbody>
+  </table>
+</div>
+
+<h3>Tasks</h3>
+<%= render partial: 'tasks/task', collection: @event.tasks, as: :task %>

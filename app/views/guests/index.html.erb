@@ -1,0 +1,18 @@
+<center><h1><%= link_to 'Send an invitation!', new_guest_path %></h1></center>
+
+<div>
+  <% @events.each do |event| %>
+  <h2><%= event.title %></h2>
+  <table class="table">
+    <thead>
+      <th> Name </th>
+      <th> RSVP </th>
+      <th> Attending </th>
+      <th> </th>
+    </thead>
+    <tbody>
+      <%= render partial: 'guest', collection: event.guests, as: :guest, locals: {event: event} %>
+    </tbody>
+  </table>
+  <% end %>
+</div>

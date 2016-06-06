@@ -1,0 +1,7 @@
+<h1>Your Tasks</h1>
+<% @events.each do |event| %>
+<h4> <%= event.title %></h4>
+<div>
+  <%= render event.tasks %>
+</div>
+<% end %>

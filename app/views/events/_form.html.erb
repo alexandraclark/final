@@ -1,0 +1,25 @@
+<%= form_for @event do |form| %>
+
+  <p><%= form.label :title %>
+  <br>
+  <%= form.text_field :title, size: 80, autofocus: true, required: true %></p>
+
+  <p><%= form.label :date, "Date" %>
+  <br>
+  <%= form.date_field :date %></p>
+
+  <p><%= form.label :budget, "Budget" %>
+  <br>
+  <%= form.number_field :budget %></p>
+
+  <p><%= form.label :details, "Details" %>
+  <br>
+  <%= form.text_area :details, rows: 4, cols: 80 %></p>
+
+  <p><%= form.label :image_url,  "Link to event image URL" %>
+  <br>
+  <%= form.text_field :image_url, size: 80 %></p>
+
+  <%= form.submit %>
+
+<% end %>

@@ -1,0 +1,35 @@
+<div class="col-xs-offset-1"><h1>Create guest or choose from list</h1></div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-6">
+<%= form_for @guest do |form| %>
+<p><%= form.label :first_name %>
+  <br><%= form.text_field :first_name %></p>
+<p><%= form.label :last_name %>
+  <br><%= form.text_field :last_name %></p>
+<p><%= form.label :email %>
+  <br><%= form.text_field :email %></p>
+<p><%= form.label :phone %>
+  <br><%= form.text_field :phone %></p>
+<%= fields_for @invitation do |invite| %>
+<p><%= invite.label :event_id, "Event" %>
+<br>
+<%= invite.collection_select :event_id, Event.all.order('title'), :id, :title %></p>
+<% end %>
+<%= form.submit "Create and invite guest", class: 'btn' %>
+<% end %>
+</div>
+
+<div class="col-xs-6">
+  <%= form_for @invitation do |invite| %>
+  <p><%= invite.label :guest_id, "Guest: " %>
+    <%= invite.collection_select :guest_id, Guest.all.order('id'), :id, :full_name %></p>
+  <p><%= invite.label :event_id, "Event: " %>
+    <%= invite.collection_select :event_id, Event.all.order('title'), :id, :title %></p>
+  <p><%= invite.submit "Invite guest", class: 'btn' %></p>
+  <% end %>
+</div>
+
+</div>
+</div>

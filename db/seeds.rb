@@ -28,7 +28,7 @@ pyjama_party = Event.new
 pyjama_party.title = "Pyjama Party"
 pyjama_party.date = "12-31-1989"
 pyjama_party.details = "A pyjama party for the turn of the decade!"
-pyjama_party.image_url = ""
+pyjama_party.image_url = "pyjama_party.jpg"
 pyjama_party.budget = "50"
 pyjama_party.save
 
@@ -36,7 +36,7 @@ class_reunion = Event.new
 class_reunion.title = "Class Reunion"
 class_reunion.date = "08-01-2132"
 class_reunion.details = "Getting the old crew back together!"
-class_reunion.image_url = ""
+class_reunion.image_url = "class_reunion.jpg"
 class_reunion.budget = "6000"
 class_reunion.save
 
@@ -44,7 +44,7 @@ networking_brunch = Event.new
 networking_brunch.title = "Networking Brunch"
 networking_brunch.date = "07-07-2017"
 networking_brunch.details = "Trade secrets. Mutual connections. Bottomless mimosas."
-networking_brunch.image_url = ""
+networking_brunch.image_url = "networking_brunch.jpg"
 networking_brunch.budget = nil
 networking_brunch.save
 
@@ -66,18 +66,18 @@ Invitation.create(guest_id: xenia.id, event_id: networking_brunch.id, RSVP: true
 Invitation.create(guest_id: vesper.id, event_id: networking_brunch.id, RSVP: true, attending: true)
 Invitation.create(guest_id: may.id, event_id: networking_brunch.id, RSVP: true, attending: true)
 
-List.create(title: "Pyjama Party To-do", event_id: pyjama_party.id)
-List.create(title: "Class Reunion Planning", event_id: class_reunion.id)
-List.create(title: "Networking Brunch Milestones", event_id: networking_brunch.id)
+pyjama_list = List.create(title: "Pyjama Party To-do", event_id: pyjama_party.id)
+class_list = List.create(title: "Class Reunion Planning", event_id: class_reunion.id)
+networking_list = List.create(title: "Networking Brunch Milestones", event_id: networking_brunch.id)
 
-Task.create(list_id: pyjama_party.id, item: "ask everyone to vote on movies", due_date: nil, tag: "movies", user_id: nil, completed: false, completed_date: nil)
-Task.create(list_id: pyjama_party.id, item: "rent movies", due_date: nil, tag: "movies", user_id: nil, completed: false, completed_date: nil)
-Task.create(list_id: pyjama_party.id, item: "borrow mom's Betamax player", due_date: nil, tag: "snacks", user_id: chris.id, completed: false, completed_date: nil)
+Task.create(list_id: pyjama_list.id, item: "ask everyone to vote on movies", due_date: "01-01-2017", tag: "movies", user_id: nil, completed: false, completed_date: nil)
+Task.create(list_id: pyjama_list.id, item: "rent movies", due_date: nil, tag: "movies", user_id: nil, completed: false, completed_date: nil)
+Task.create(list_id: pyjama_list.id, item: "borrow mom's Betamax player", due_date: nil, tag: "snacks", user_id: chris.id, completed: false, completed_date: nil)
 
-Task.create(list_id: class_reunion.id, item: "rent venue", due_date: nil, tag: "venue", user_id: nil, completed: false, completed_date: nil)
+Task.create(list_id: class_list.id, item: "rent venue", due_date: nil, tag: "venue", user_id: nil, completed: false, completed_date: nil)
 
-Task.create(list_id: networking_brunch.id, item: "reserve restaurant back room", due_date: nil, tag: "venue", user_id: nil, completed: false, completed_date: nil)
-Task.create(list_id: networking_brunch.id, item: "vet everyone's dietary preferences", due_date: nil, tag: nil, user_id: nil, completed: false, completed_date: nil)
+Task.create(list_id: networking_list.id, item: "reserve restaurant back room", due_date: nil, tag: "venue", user_id: nil, completed: false, completed_date: nil)
+Task.create(list_id: networking_list.id, item: "vet everyone's dietary preferences", due_date: nil, tag: nil, user_id: nil, completed: false, completed_date: nil)
 
 Supply.create(event_id: pyjama_party.id, title: "microwave popcorn (2 boxes)", quantity: nil, price: 10, user_id: nil, purchase_url: nil, purchased: true)
 Supply.create(event_id: pyjama_party.id, title: "plates & bowls (large box)", quantity: 1, price: nil, user_id: chris.id, purchase_url: nil, purchased: false)

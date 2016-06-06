@@ -1,0 +1,11 @@
+<ul>
+<% if task %>
+
+  <%= form_for task do |form| %>
+    <%= form.check_box :completed %>
+    <%= form.label task.item %><% if task.due_date %> (due: <%= task.due_date %>) <% end %>
+    <% end %>
+  <!-- <div class="checkbox" id="<%=task.id%>"><label><input type="checkbox" value=""><%= task.item %> -->
+    <!-- <% if task.due_date %> (due: <%= task.due_date %>) <% end %> </label> -->
+<% end %>
+</ul>

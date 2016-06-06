@@ -1,0 +1,9 @@
+<% preview_url = event ? event.image_url : 'add_new.jpg' %>
+<% path = event ? event_path(event.id) : new_event_path %>
+
+<div class="event-box">
+<% if event %>
+  <h3> <%= link_to event.title, event_path(event.id) %></h3>
+<% end %>
+<%= link_to image_tag(preview_url), path %>
+</div>

@@ -12,4 +12,32 @@
  *
  */
 
- @import "_bootstrap";
+@import 'bootstrap';
+
+h1 {
+  margin-bottom: 2em;
+}
+
+.event-box {
+  display: inline-block;
+  padding: 15px;
+}
+
+.event-details {
+  width: 75%;
+  padding: 15px;
+}
+
+.event-image {
+  float: right;
+  margin-bottom: 5em;
+}
+
+.stroked {
+  text-decoration: line-through;
+}
+
+//
+// body {
+//   background-color: #F6C0D0;
+// }

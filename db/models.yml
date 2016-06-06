@@ -13,7 +13,7 @@ Invitation
 
 Event
   title: string
-  date: integer
+  date: string
   details: text
   image_url: string
   budget: integer
@@ -25,7 +25,7 @@ List
 Task
   list_id: integer
   item: string
-  due_date: integer
+  due_date: string
   tag: string
   user_id: integer
   completed: boolean

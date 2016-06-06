@@ -1,0 +1,29 @@
+<% if guest %>
+<% invite = Invitation.find_by(:event_id => event.id, :guest_id => guest.id) %>
+<tr>
+  <td>
+    <%= link_to guest.first_name + " " + guest.last_name, guest_path(guest.id) %>
+  </td>
+  <td>
+    <% if invite == nil %>
+    n/a
+    <% elsif invite.RSVP %>
+    yes
+    <% else %>
+    no
+    <% end %>
+  </td>
+  <td>
+    <% if invite == nil %>
+    n/a
+    <% elsif invite.attending %>
+    yes
+    <% else %>
+    no
+    <% end %>
+  </td>
+  <td>
+    nudge
+  </td>
+  </tr>
+<% end %>

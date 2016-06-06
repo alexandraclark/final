@@ -13,9 +13,12 @@
 
 ActiveRecord::Schema.define(version: 0) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "events", force: :cascade do |t|
     t.string  "title"
-    t.integer "date"
+    t.string  "date"
     t.text    "details"
     t.string  "image_url"
     t.integer "budget"
@@ -29,7 +32,7 @@ ActiveRecord::Schema.define(version: 0) do
     t.string  "phone"
   end
 
-  add_index "guests", ["user_id"], name: "index_guests_on_user_id"
+  add_index "guests", ["user_id"], name: "index_guests_on_user_id", using: :btree
 
   create_table "invitations", force: :cascade do |t|
     t.integer "guest_id"
@@ -38,15 +41,15 @@ ActiveRecord::Schema.define(version: 0) do
     t.boolean "attending", default: false
   end
 
-  add_index "invitations", ["event_id"], name: "index_invitations_on_event_id"
-  add_index "invitations", ["guest_id"], name: "index_invitations_on_guest_id"
+  add_index "invitations", ["event_id"], name: "index_invitations_on_event_id", using: :btree
+  add_index "invitations", ["guest_id"], name: "index_invitations_on_guest_id", using: :btree
 
   create_table "lists", force: :cascade do |t|
     t.string  "title"
     t.integer "event_id"
   end
 
-  add_index "lists", ["event_id"], name: "index_lists_on_event_id"
+  add_index "lists", ["event_id"], name: "index_lists_on_event_id", using: :btree
 
   create_table "supplies", force: :cascade do |t|
     t.integer "event_id"
@@ -58,21 +61,21 @@ ActiveRecord::Schema.define(version: 0) do
     t.boolean "purchased",    default: false
   end
 
-  add_index "supplies", ["event_id"], name: "index_supplies_on_event_id"
-  add_index "supplies", ["user_id"], name: "index_supplies_on_user_id"
+  add_index "supplies", ["event_id"], name: "index_supplies_on_event_id", using: :btree
+  add_index "supplies", ["user_id"], name: "index_supplies_on_user_id", using: :btree
 
   create_table "tasks", force: :cascade do |t|
     t.integer "list_id"
-    t.integer "due_date"
+    t.string  "item"
+    t.string  "due_date"
     t.string  "tag"
     t.integer "user_id"
     t.boolean "completed",      default: false
     t.integer "completed_date"
-    t.string  "item"
   end
 
-  add_index "tasks", ["list_id"], name: "index_tasks_on_list_id"
-  add_index "tasks", ["user_id"], name: "index_tasks_on_user_id"
+  add_index "tasks", ["list_id"], name: "index_tasks_on_list_id", using: :btree
+  add_index "tasks", ["user_id"], name: "index_tasks_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string  "username"
@@ -82,6 +85,6 @@ ActiveRecord::Schema.define(version: 0) do
     t.string  "password_confirmation"
   end
 
-  add_index "users", ["guest_id"], name: "index_users_on_guest_id"
+  add_index "users", ["guest_id"], name: "index_users_on_guest_id", using: :btree
 
 end
