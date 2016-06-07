@@ -2159,6 +2159,70 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
+	"\/public\/assets\/add_new-e1d441e4bf21ed69a6a27d8247e885b27677456d12cf06859451b0f0ebb7a301.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 2071,
+		"inputAbbreviatedPath": "\/public\/assets\/add_new-e1d441e4bf21ed69a6a27d8247e885b27677456d12cf06859451b0f0ebb7a301.jpg",
+		"outputAbbreviatedPath": "\/public\/assets\/add_new-e1d441e4bf21ed69a6a27d8247e885b27677456d12cf06859451b0f0ebb7a301.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/public\/assets\/application-756ae1c46ce7ae321d91c374ced8caf5e3e0c83a3db77fa4927c5db81d6e24d8.css": {
+		"fileType": 16,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/public\/assets\/application-756ae1c46ce7ae321d91c374ced8caf5e3e0c83a3db77fa4927c5db81d6e24d8.css",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/public\/assets\/application-c7a3512d91f122e246024fa6b43713e8a529795a13f4638f17eb0f43887a4bbd.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/public\/assets\/application-c7a3512d91f122e246024fa6b43713e8a529795a13f4638f17eb0f43887a4bbd.js",
+		"outputAbbreviatedPath": "\/public\/assets\/min\/application-c7a3512d91f122e246024fa6b43713e8a529795a13f4638f17eb0f43887a4bbd-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/public\/assets\/class_reunion-8c44e32b9efc15ca98cc08ff305e38cbac72a22dea6aefb5735a1d8e0f14aab1.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 7835,
+		"inputAbbreviatedPath": "\/public\/assets\/class_reunion-8c44e32b9efc15ca98cc08ff305e38cbac72a22dea6aefb5735a1d8e0f14aab1.jpg",
+		"outputAbbreviatedPath": "\/public\/assets\/class_reunion-8c44e32b9efc15ca98cc08ff305e38cbac72a22dea6aefb5735a1d8e0f14aab1.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/public\/assets\/networking_brunch-9ce298b3c8ad619df1c4e72065ec5e8aac4ecc23f87f35fc3c070bf4d2a6ccc2.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 14148,
+		"inputAbbreviatedPath": "\/public\/assets\/networking_brunch-9ce298b3c8ad619df1c4e72065ec5e8aac4ecc23f87f35fc3c070bf4d2a6ccc2.jpg",
+		"outputAbbreviatedPath": "\/public\/assets\/networking_brunch-9ce298b3c8ad619df1c4e72065ec5e8aac4ecc23f87f35fc3c070bf4d2a6ccc2.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/public\/assets\/pyjama_party-1fc86836eead63dba7e81993bebce3b0a3509182c4083e69b3b7a7d20e646851.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 11370,
+		"inputAbbreviatedPath": "\/public\/assets\/pyjama_party-1fc86836eead63dba7e81993bebce3b0a3509182c4083e69b3b7a7d20e646851.jpg",
+		"outputAbbreviatedPath": "\/public\/assets\/pyjama_party-1fc86836eead63dba7e81993bebce3b0a3509182c4083e69b3b7a7d20e646851.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/README.md": {
 		"criticStyle": 0,
 		"enableFootnotes": 1,
