@@ -1,7 +1,14 @@
 class TasksController < ApplicationController
 
   def index
-    @events = Event.all
+    user = User.find_by(id: session[:user_id])
+    if user
+      guest_status = Guest.find_by(id: user.guest_id)
+      invitations = Invitation.where(guest_id: guest_status.id).pluck("event_id")
+      @events = Event.where(id: invitations)
+    else
+      render 'layouts/no_tasks'
+    end
   end
 
   def new

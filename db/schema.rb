@@ -78,11 +78,9 @@ ActiveRecord::Schema.define(version: 0) do
   add_index "tasks", ["list_id"], name: "index_tasks_on_list_id", using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string  "username"
     t.string  "email"
     t.integer "guest_id"
-    t.string  "password"
-    t.string  "password_confirmation"
+    t.text    "password_digest"
   end
 
   add_index "users", ["guest_id"], name: "index_users_on_guest_id", using: :btree

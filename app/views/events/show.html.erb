@@ -1,16 +1,19 @@
 <h2>
   <%= @event.title %>
 </h2>
+<%= link_to "delete this event", event_path(@event.id), :method => :delete %>
 
+<div class="row container">
 <div class="event-details">
   <div class="row">
-  <p><%= image_tag @event.image_url, class: "event-image" %></p>
+  <%= image_tag @event.image_url, class: "event-image" %>
 
-  <div>
+  <div class="event-specs">
     <p>Budget: $<%= @event.budget %></p>
     <p>Date: <%= @event.date %></p>
     <p> Details: <%= @event.details %></p>
   </div>
+</div>
 </div>
 </div>
 

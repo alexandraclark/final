@@ -8013,6 +8013,11 @@ h1 {
   margin-top: 1em;
   margin-bottom: 1em; }
 
+.alert-success {
+  background-color: #BEE3DB;
+  color: #485665;
+  border-color: #1E3231; }
+
 .invite-link {
   vertical-align: middle;
   padding-right: 125px;
@@ -8029,6 +8034,7 @@ h1 {
   margin-right: 15px; }
 
 .action-link {
+  float: right;
   margin-right: 15px; }
 
 .checked-task {
@@ -8041,6 +8047,12 @@ h1 {
   display: inline-block;
   padding: 15px; }
 
+.event-specs {
+  background-color: #D0A5C0;
+  border-radius: 5px;
+  display: inline-block;
+  padding: 2em; }
+
 .task-box {
   padding: 15px; }
 
@@ -8052,8 +8064,16 @@ h1 {
   vertical-align: top; }
 
 .event-image {
-  float: right;
-  margin-bottom: 5em; }
+  margin-bottom: 2em;
+  margin-top: 1em;
+  margin-right: 2em;
+  display: inline-block; }
 
 .stroked {
   text-decoration: line-through; }
+
+.task-item {
+  display: inline; }
+
+ul {
+  padding-left: 5px; }

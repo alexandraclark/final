@@ -12,6 +12,7 @@
   <nav class="navbar navbar-light bg-faded" style="background-color: #F6C0D0">
     <div class="container">
     <a class="navbar-brand" href="/">Plannr</a>
+    <% if session["user_id"].present? %>
     <ul class="nav navbar-nav">
       <li class="nav-item active">
         <a class="nav-link" href="/">Your Events <span class="sr-only">(current)</span></a>
@@ -26,13 +27,16 @@
         <a class="nav-link" href="<%= guests_path %>">Your Guests</a>
       </li>
     </ul>
+    <% end %>
     <ul class="nav navbar-nav navbar-right">
-      <li>
-        <a class="nav-link" href="#">Sign Up </a>
-      </li>
-    <li>
-      <a class="nav-link" href="#">Sign In </a>
-    </li>
+      <% if session["user_id"].present? %>
+      <% current_user = Guest.find_by(user_id: session["user_id"]) %>
+      <li><%= link_to "Welcome, " + current_user.first_name + "!", user_path(current_user) %></li>
+      <li><%= link_to "Sign Out", logout_path %></li>
+      <% else %>
+      <li><%= link_to "Sign Up", new_user_path %></li>
+      <li><%= link_to "Sign In", login_path %></li>
+      <% end %>
     </ul>
     </div>
   </nav>

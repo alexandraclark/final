@@ -3,7 +3,14 @@
 </h1></div></center>
 
 
+<% if flash[:notice] %>
+<br>
+<div class="alert alert-success alert-dismissible" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  <%= flash[:notice] %>
+</div>
 
+<% end %>
 
 <div>
   <% @events.each do |event| %>

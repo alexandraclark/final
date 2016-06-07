@@ -41,8 +41,6 @@ Supply
   purchased: boolean
 
 User
-  username: string
   email: string
   guest_id: integer   # if user is a guest
-  password: string
-  password_confirmation: string
+  password_digest: text
