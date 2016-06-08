@@ -11,7 +11,7 @@
 <p><%= form.label :email %>
   <br><%= form.text_field :email %></p>
 <p><%= form.label :phone %>
-  <br><%= form.text_field :phone %></p>
+  <br><%= form.text_field :phone %> (please enter as seven-digit string, i.e.: 5555555)</p>
 <%= fields_for @invitation do |invite| %>
 <p><%= invite.label :event_id, "Event" %>
 <br>
