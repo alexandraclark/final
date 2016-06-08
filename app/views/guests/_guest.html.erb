@@ -23,7 +23,7 @@
     <% end %>
   </td>
   <td>
-    <%= link_to "nudge", "notifications/notify" + {:phone => guest.phone, :full_name => guest.full_name, :event_id => event.id, :event_title => event.title}.to_param, :method => :post %>
+    <%= link_to "nudge", root_url + "notifications/notify?" + {:phone => guest.phone, :full_name => guest.full_name, :event_id => event.id, :event_title => event.title}.to_param, :method => :post %>
   </td>
   </tr>
 <% end %>
