@@ -9,7 +9,8 @@ class TwilioController < ApplicationController
 
   def sms
     from = params[:From]
-    from = from.tr!('+1','')
+    from = from.tr!('+','')
+    from = from[1..-1]
 
     message = params[:Body]
     message = message.split('#', 2)
