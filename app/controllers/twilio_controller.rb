@@ -18,8 +18,8 @@ class TwilioController < ApplicationController
     puts message[0]
     # puts message[1]
 
-    @guest = Guest.find_by(:phone => from)
-    @event = Event.find(message[1])
+    @guest = Guest.find_by(:phone => from.to_i)
+    @event = Event.find(message[1].to_i)
 
     if message[0] == "YES" and @guest and @event
       @invite = Invitation.where(:event_id => @event.id, :guest_id => @guest.id).first
