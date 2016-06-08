@@ -21,14 +21,14 @@ class TwilioController < ApplicationController
     @guest_ids = Guest.where(:phone => from.to_i).pluck(:id)
     @event = Event.find_by(:id => message[1].to_i)
 
-    if message[0] == "YES" and @guest and @event
+    if message[0] == "YES" and @guest_ids and @event
       @invite = Invitation.where(:event_id => @event.id, :guest_id => @guest_ids).first
       if @invite
         @invite.RSVP = true
         @invite.attending = true
         @invite.save
       end
-    elsif message[0] == "NO" and @guest and @event
+    elsif message[0] == "NO" and @guest_ids and @event
       @invite = Invitation.find_by(:event_id => @event.id, :guest_id => @guest.id).first
       if @invite
         @invite.RSVP = true
