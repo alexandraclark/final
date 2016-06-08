@@ -8,7 +8,8 @@ class InvitationsController < ApplicationController
     @invite.attending = false
 
     if @invite.save
-      redirect_to event_path, notice: "Invite sent!"
+      @event = Event.find(params[:invitation][:event_id])
+      redirect_to event_path(@event), notice: "Invite sent!"
     else
       render 'new'
     end
