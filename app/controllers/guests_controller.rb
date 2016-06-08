@@ -92,7 +92,8 @@ class GuestsController < ApplicationController
     @invite.attending = false
 
     if @invite.save
-      redirect_to events_url, notice: "Invite sent!"
+      @event = Event.find(params[:invitation][:event_id])
+      redirect_to event_url(@event), notice: "Invite sent!"
     else
       render 'new'
     end
