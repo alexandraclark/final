@@ -21,6 +21,9 @@ class TasksController < ApplicationController
       if guest_status
         invitations = Invitation.where(guest_id: guest_status.id).pluck("event_id")
         @events = Event.where(id: invitations)
+        if @events.length == 0
+          render 'layouts/no_tasks'
+        end
       else render 'layouts/no_tasks'
       end
     else

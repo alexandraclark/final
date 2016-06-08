@@ -21,6 +21,9 @@ class SuppliesController < ApplicationController
       if guest_status
         invitations = Invitation.where(guest_id: guest_status.id).pluck("event_id")
         @events = Event.where(id: invitations)
+        if @events.length == 0
+          render 'layouts/no_supplies'
+        end
       else
         render 'layouts/no_supplies'
       end
