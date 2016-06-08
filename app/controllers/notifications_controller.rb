@@ -47,7 +47,7 @@ class NotificationsController < ApplicationController
 
     client = Twilio::REST::Client.new Rails.application.secrets.twilio_account_sid, Rails.application.secrets.twilio_auth_token
     message = client.messages.create from: '7153182885', to: @phone.to_s, body: 'Hi, ' + @full_name +
-                                                                                '! Remember to do ' + @task_item + ' for ' + @event_title +
+                                                                                '! Remember to ' + @task_item + ' for ' + @event_title +
                                                                                 ' on ' + @event_date +
                                                                                 '!'
     flash[:notice] = "Nudged " + @full_name + "!"
