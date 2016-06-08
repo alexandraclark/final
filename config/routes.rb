@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   post 'notifications/notify_tasks' => 'notifications#notify_tasks'
   post 'notifications/notify_supplies' => 'notifications#notify_supplies'
   post 'twilio/sms' => 'twilio#sms'
+  get 'twilio/sms' => 'twilio#sms'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
