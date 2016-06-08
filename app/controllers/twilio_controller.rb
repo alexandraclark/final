@@ -25,18 +25,18 @@ class TwilioController < ApplicationController
       @invite = Invitation.where(:event_id => @event.id, :guest_id => @guest_ids)
       if @invite
         @invite.each do |i|
-          @i.RSVP = true
-          @i.attending = true
-          @i.save
+          i.RSVP = true
+          i.attending = true
+          i.save
         end
       end
     elsif message[0] == "NO" and @guest_ids and @event
       @invite = Invitation.where(:event_id => @event.id, :guest_id => @guest.id)
       if @invite
         @invite.each do |i|
-          @i.RSVP = true
-          @i.attending = false
-          @i.save
+          i.RSVP = true
+          i.attending = false
+          i.save
         end
       end
     end
