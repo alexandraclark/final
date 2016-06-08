@@ -6,6 +6,16 @@
   <p><%= f.label :email %><br><%= f.text_field :email, size: 40, required: true %></p>
   <p><%= f.label :password %><br><%= f.password_field :password, size: 40, required: true %></p>
   <p><%= f.label :password_confirmation %><br><%= f.password_field :password_confirmation, size: 40, required: true %></p>
+
+  <%= fields_for @guest do |user| %>
+  <p><%= user.label :first_name, "First name" %><br>
+  <%= user.text_field :first_name, size: 40, required: true %></p>
+  <p><%= user.label :last_name, "Last name" %><br>
+  <%= user.text_field :last_name, size: 40, required: true %></p>
+  <p><%= user.label :phone, "Phone number" %><br>
+  <%= user.text_field :phone, size: 40, required: true %></p>
+  <% end %>
+
   <p><%= f.submit "Sign Me Up!", :class => "btn" %></p>
 
 <% end %>

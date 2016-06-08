@@ -1,0 +1,7 @@
+<h4>Name: <%= @guest.full_name %><br>
+Phone: <%= @guest.phone %><br>
+Email: <%= @guest.email %><br></h4>
+
+<br>
+<%= link_to "edit guest", edit_guest_path(@guest) %><br>
+<%= link_to "delete guest", guest_path(@guest), :method => :delete %>

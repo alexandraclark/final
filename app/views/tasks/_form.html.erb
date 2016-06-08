@@ -13,8 +13,8 @@
 
   <p><%= form.label :due_date, "Due Date" %>
   <br>
-  <% if current_date = Task.find_by(id: params[:id]).due_date %>
-  <%= form.date_field :due_date, :value => current_date %></p>
+  <% if current_date = Task.find_by(id: params[:id]) %>
+  <%= form.date_field :due_date, :value => current_date.due_date %></p>
   <% else %>
   <%= form.date_field :due_date %>
   <% end %>
@@ -25,7 +25,7 @@
 
   <p><%= form.label :guest_id, "Assigned to" %>
     <br>
-  <%= form.collection_select :guest_id, Guest.all.order('last_name'), :id, :full_name, :include_blank => true %></p>
+  <%= form.collection_select :guest_id, @guests, :id, :full_name, :include_blank => true %></p>
   </p>
 
   <%= form.submit %>

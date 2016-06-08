@@ -11,6 +11,9 @@
       <% if supply.quantity %>
         <div class="pull-right quantity" display="inline-block">(quantity: <%= supply.quantity %>)</div>
       <% end %>
+      <% if supply.guest_id %>
+        <div display="inline-block" class="assigned-to">assigned to: <%= Guest.find(supply.guest_id).full_name %> <ul class="pull-right"><%= link_to "nudge" %></ul></div>
+      <% end %>
     <% else %>
       <%= link_to "delete", supply_path(supply.id), :method => :delete, :class => "pull-right action-link" %>
       <%= link_to "assign/edit", edit_supply_path(supply.id), :class => "pull-right action-link" %>
@@ -18,6 +21,9 @@
       <%= form.label supply.title %>
       <% if supply.quantity %>
         <div class="pull-right quantity" display="inline-block">(quantity: <%= supply.quantity %>)</div>
+      <% end %>
+      <% if supply.guest_id %>
+        <div display="inline-block" class="assigned-to">assigned to: <%= Guest.find(supply.guest_id).full_name %> <ul class="pull-right"><%= link_to "nudge" %></ul></div>
       <% end %>
 
     <% end %>

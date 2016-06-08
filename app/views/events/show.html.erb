@@ -1,6 +1,7 @@
 <h2>
   <%= @event.title %>
 </h2>
+<%= link_to "edit this event", edit_event_path(@event.id) %><br>
 <%= link_to "delete this event", event_path(@event.id), :method => :delete %>
 
 <div class="row container">

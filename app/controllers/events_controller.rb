@@ -4,8 +4,11 @@ class EventsController < ApplicationController
     user = User.find_by(id: session[:user_id])
     if user
       guest_status = Guest.find_by(id: user.guest_id)
-      invitations = Invitation.where(guest_id: guest_status.id).pluck("event_id")
-      @events = Event.where(id: invitations)
+      if guest_status
+        invitations = Invitation.where(guest_id: guest_status.id).pluck("event_id")
+        @events = Event.where(id: invitations)
+      else render 'layouts/no_events'
+      end
     else
       render 'layouts/login_splash'
     end
@@ -23,7 +26,10 @@ class EventsController < ApplicationController
     @event.image_url = params[:event][:image_url]
     @event.budget = params[:event][:budget]
 
-    if @event.save
+    @list = List.new
+    @list.title = @event.title
+
+    if @event.save and @list.save
       guest = Guest.find_by(user_id: session[:user_id])
       @invitation = Invitation.new
       @invitation.guest_id = guest.id
@@ -31,7 +37,9 @@ class EventsController < ApplicationController
       @invitation.RSVP = true
       @invitation.attending = true
 
-      if @invitation.save
+      @list.event_id = @event.id
+
+      if @invitation.save and @list.save
         redirect_to events_url, notice: "Event added!"
       else
         render 'new'
@@ -46,6 +54,26 @@ class EventsController < ApplicationController
     @event = Event.find_by(id: params[:id])
     if @event == nil
       redirect_to events_url
+    end
+  end
+
+  def edit
+    @event = Event.find_by(id: params[:id])
+  end
+
+  def update
+    @event = Event.find(params[:id])
+
+    @event.title = params[:event][:title]
+    @event.date = params[:event][:date]
+    @event.budget = params[:event][:budget]
+    @event.details = params[:event][:details]
+    @event.image_url = params[:event][:image_url]
+
+    if @event.save
+      redirect_to event_url(@event.id)
+    else
+      render :edit
     end
   end
 

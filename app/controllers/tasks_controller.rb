@@ -1,11 +1,28 @@
 class TasksController < ApplicationController
 
+  before_action :find_guests, only: [:new, :edit]
+
+  def find_guests
+    user = User.find_by(id: session[:user_id])
+    if user
+      guest_status = Guest.find_by(id: user.guest_id)
+      if guest_status
+        invitations = Invitation.where(guest_id: guest_status.id).pluck("event_id")
+        all_invitations = Invitation.where(event_id: invitations).pluck("guest_id")
+        @guests = Guest.where(id: all_invitations)
+      end
+    end
+  end
+
   def index
     user = User.find_by(id: session[:user_id])
     if user
       guest_status = Guest.find_by(id: user.guest_id)
-      invitations = Invitation.where(guest_id: guest_status.id).pluck("event_id")
-      @events = Event.where(id: invitations)
+      if guest_status
+        invitations = Invitation.where(guest_id: guest_status.id).pluck("event_id")
+        @events = Event.where(id: invitations)
+      else render 'layouts/no_tasks'
+      end
     else
       render 'layouts/no_tasks'
     end

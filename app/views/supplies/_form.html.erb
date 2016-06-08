@@ -20,7 +20,7 @@
 
   <p><%= form.label :guest_id, "Assigned to" %>
     <br>
-  <%= form.collection_select :guest_id, Guest.all.order('last_name'), :id, :full_name, :include_blank => true %></p>
+  <%= form.collection_select :guest_id, @guests, :id, :full_name, :include_blank => true %></p>
   </p>
 
   <p><%= form.label :purchase_url, "Purchase URL" %>
@@ -28,5 +28,13 @@
   <%= form.url_field :purchase_url %></p>
 
   <%= form.submit %>
+
+  <% if @supply.errors.any? %>
+  <ul>
+    <% @supply.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+  <% end %>
 
 <% end %>

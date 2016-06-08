@@ -6,7 +6,11 @@
 
   <p><%= form.label :date, "Date" %>
   <br>
-  <%= form.date_field :date %></p>
+  <% if current_date = Event.find_by(id: params[:id]) %>
+  <%= form.date_field :date, :value => current_date.date %></p>
+  <% else %>
+  <%= form.date_field :date %>
+  <% end %>
 
   <p><%= form.label :budget, "Budget" %>
   <br>
@@ -21,5 +25,13 @@
   <%= form.text_field :image_url, size: 80 %></p>
 
   <%= form.submit %>
+
+  <% if @event.errors.any? %>
+  <ul>
+    <% @event.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+  <% end %>
 
 <% end %>
