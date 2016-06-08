@@ -16,7 +16,6 @@ Rails.application.routes.draw do
   post '/sessions' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
 
-  map.notify 'notifications', :controller => 'notifications', :action => 'notify'
   post 'notifications/notify' => 'notifications#notify'
   post 'twilio/voice' => 'twilio#voice'
 
