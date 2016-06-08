@@ -23,7 +23,8 @@ class TwilioController < ApplicationController
       invite.attending = true
       invite.save
     elsif message[0] == "NO" and @guest and @event
-      invite = Invitation.where(:event_id => @event.id, :guest_id => @guest.id)
+      invite = Invitation.find_by(:event_id => @event.id, :guest_id => @guest.id)
+      puts invite
       invite.RSVP = true
       invite.attending = false
       invite.save
