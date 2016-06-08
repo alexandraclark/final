@@ -23,7 +23,11 @@
         <div class="pull-right quantity" display="inline-block">(quantity: <%= supply.quantity %>)</div>
       <% end %>
       <% if supply.guest_id %>
-        <div display="inline-block" class="assigned-to">assigned to: <%= Guest.find(supply.guest_id).full_name %> <ul class="pull-right"><%= link_to "nudge" %></ul></div>
+      <% guest = Guest.find(supply.guest_id) %>
+      <% event = Event.find(supply.event_id) %>
+        <div display="inline-block" class="assigned-to">assigned to: <%= Guest.find(supply.guest_id).full_name %>
+          <ul class="pull-right"><%= link_to "nudge", root_url + "notifications/notify_supplies?" + {:phone => guest.phone, :full_name => guest.full_name, :event_id => event.id, :event_title => event.title, :supply_title => supply.title}.to_param, :method => :post %></ul>
+        </div>
       <% end %>
 
     <% end %>

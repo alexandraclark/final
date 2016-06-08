@@ -18,7 +18,12 @@
       <%= link_to "delete", task_path(task.id), :method => :delete, :class => "pull-right action-link" %>
       <%= link_to "assign/edit", edit_task_path(task.id), :class => "pull-right action-link" %>
       <% if task.guest_id %>
-        <div display="inline-block" class="assigned-to">assigned to: <%= Guest.find(task.guest_id).full_name %> <ul class="pull-right"><%= link_to "nudge" %></ul></div>
+      <% guest = Guest.find(task.guest_id) %>
+      <% list = List.find(task.list_id) %>
+      <% event = Event.find(list.event_id) %>
+        <div display="inline-block" class="assigned-to">assigned to: <%= Guest.find(task.guest_id).full_name %>
+          <ul class="pull-right"><%= link_to "nudge", root_url + "notifications/notify_tasks?" + {:phone => guest.phone, :full_name => guest.full_name, :event_id => event.id, :event_title => event.title, :task_item => task.item}.to_param, :method => :post %></ul>
+        </div>
       <% end %>
       <% end %>
 

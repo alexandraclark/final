@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   get '/logout' => 'sessions#destroy'
 
   post 'notifications/notify' => 'notifications#notify'
+  post 'notifications/notify_tasks' => 'notifications#notify_tasks'
+  post 'notifications/notify_supplies' => 'notifications#notify_supplies'
   post 'twilio/voice' => 'twilio#voice'
 
   # The priority is based upon order of creation: first created -> highest priority.
