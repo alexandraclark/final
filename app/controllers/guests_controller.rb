@@ -80,26 +80,37 @@ class GuestsController < ApplicationController
     @guest.email = params[:guest][:email]
     @guest.phone = params[:guest][:phone]
 
-    @invite = Invitation.new
-    @invite.guest_id = @guest.id
-    @invite.event_id = params[:invitation][:event_id]
-    @invite.RSVP = false
-    @invite.attending = false
-
     if @guest.save
+
+      @invite = Invitation.new
+      @invite.guest_id = @guest.id
+      @invite.event_id = params[:invitation][:event_id]
+      @invite.RSVP = false
+      @invite.attending = false
+
       if @invite.save
         @event = Event.find(params[:invitation][:event_id])
         redirect_to event_url(@event), notice: "Invite sent!"
 
-        client = Twilio::REST::Client.new Rails.application.secrets.twilio_account_sid, Rails.application.secrets.twilio_auth_token
-        message = client.messages.create from: '7153182885',
+        begin
+          client = Twilio::REST::Client.new Rails.application.secrets.twilio_account_sid, Rails.application.secrets.twilio_auth_token
+          message = client.messages.create from: '7153182885',
                                           to: @guest.phone.to_s,
                                           body: 'Hi, ' + @guest.full_name + '! You\'re invited to ' + @event.title + ' on ' + @event.date.to_s + '! Please RSVP by replying to this text message with YES#' + @event.id.to_s + '#' + @guest.id.to_s + ' or NO#' + @event.id.to_s + '#' + @guest.id.to_s + '. Hope to see you there!'
 
+        rescue Twilio::REST::RequestError => e
+        end
+
       else
+        find_guests_and_events
+        @guest = Guest.new
+        @invitation = Invitation.new
         render 'new'
       end
     else
+      find_guests_and_events
+      @guest = Guest.new
+      @invitation = Invitation.new
       redirect_to new_guest_url, notice: "Something went wrong! Please be sure to fill all fields."
     end
 
