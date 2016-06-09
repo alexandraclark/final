@@ -1,4 +1,4 @@
-# Final Project Milestone \#1
+# Final Project
 
 This project is an party planning app for families or small groups of friends who are all pitching in to make the event happen.
 
@@ -8,7 +8,9 @@ The finished app is deployed here: https://limitless-plains-54750.herokuapp.com/
 
 You can create a new account/events/etc. from scratch, or login with one of the predefined accounts from the seed file.
 
-Right now, there is only one User per event(s), who is the event creator. In the future, I'd like to make it so that invited Guests receive a unique signup link and can become Users in their own right, with a new account that is tied to their Guest info and Invitations.
+Right now, there is only one User per event(s), who is the event creator. In the future, I'd like to make it so that invited Guests receive a unique signup link and can become Users in their own right, with a new account that is tied to their Guest info and Invitations. But for now, Guests only receive and send SMS messages.
+
+There may be an issue with the assets pipeline that prevents CSS from loading properly on the local copy, depending on how Rails is installed. Correct CSS can be viewed at the live link.
 
 ## Resources
 
