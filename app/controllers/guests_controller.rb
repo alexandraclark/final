@@ -80,6 +80,12 @@ class GuestsController < ApplicationController
     @guest.email = params[:guest][:email]
     @guest.phone = params[:guest][:phone]
 
+    @invite = Invitation.new
+    @invite.guest_id = @guest.id
+    @invite.event_id = params[:invitation][:event_id]
+    @invite.RSVP = false
+    @invite.attending = false
+
     if @guest.save
       if @invite.save
         @event = Event.find(params[:invitation][:event_id])
@@ -96,12 +102,6 @@ class GuestsController < ApplicationController
     else
       redirect_to new_guest_url, notice: "Something went wrong! Please be sure to fill all fields."
     end
-
-    @invite = Invitation.new
-    @invite.guest_id = @guest.id
-    @invite.event_id = params[:invitation][:event_id]
-    @invite.RSVP = false
-    @invite.attending = false
 
   end
 
