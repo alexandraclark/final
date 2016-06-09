@@ -19,7 +19,7 @@ class TwilioController < ApplicationController
     puts message[1]
     puts message[2]
 
-    @guest = Guest.find_by(id: => message[2].to_i)
+    @guest = Guest.find_by(:id => message[2].to_i)
     @event = Event.find_by(:id => message[1].to_i)
 
     if message[0] == "YES" and @guest and @event
