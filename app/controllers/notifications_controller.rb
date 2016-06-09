@@ -8,14 +8,13 @@ class NotificationsController < ApplicationController
     @event_title = params[:event_title]
     @phone = params[:phone]
     @full_name = params[:full_name]
-    # @phone = '7157181178'
-    # @full_name = 'whoever'
+    @guest_id = params[:guest_id]
 
     client = Twilio::REST::Client.new Rails.application.secrets.twilio_account_sid, Rails.application.secrets.twilio_auth_token
     message = client.messages.create from: '7153182885', to: @phone.to_s, body: 'Hi, ' + @full_name +
                                                                                 '! Remember to mark your calendar for ' + @event_title +
                                                                                 ' on ' + @event_date +
-                                                                                '! If you haven\'t already RSVP\'d, reply to this text message with YES#' + @event_id + ' or NO#' + @event_id + '. Hope to see you there!'
+                                                                                '! If you haven\'t already RSVP\'d, reply to this text message with YES#' + @event_id + '#' + @guest_id + ' or NO#' + @event_id + '#' + @guest_id + '. Hope to see you there!'
     flash[:notice] = "Nudged " + @full_name + "!"
     redirect_to :back
   end

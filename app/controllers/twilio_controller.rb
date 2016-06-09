@@ -13,16 +13,16 @@ class TwilioController < ApplicationController
     from = from[1..-1]
 
     message = params[:Body]
-    message = message.split('#', 2)
+    message = message.split('#', 3)
 
     puts message[0]
     # puts message[1]
 
-    @guest_ids = Guest.where(:phone => from.to_i).pluck(:id)
+    @guest = Guest.find_by(id: => message[2].to_i)
     @event = Event.find_by(:id => message[1].to_i)
 
-    if message[0] == "YES" and @guest_ids and @event
-      @invite = Invitation.where(:event_id => @event.id, :guest_id => @guest_ids)
+    if message[0] == "YES" and @guest and @event
+      @invite = Invitation.find_by(:event_id => @event.id, :guest_id => @guest.id)
       if @invite
         @invite.each do |i|
           i.RSVP = true
@@ -30,7 +30,7 @@ class TwilioController < ApplicationController
           i.save
         end
       end
-    elsif message[0] == "NO" and @guest_ids and @event
+    elsif message[0] == "NO" and @guest and @event
       @invite = Invitation.where(:event_id => @event.id, :guest_id => @guest.id)
       if @invite
         @invite.each do |i|
