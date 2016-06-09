@@ -1,6 +1,9 @@
 # Final Project Milestone \#1
 
+# NOTICE: This app functions through the use of Twilio SMS/phone services. In order to run the app locally with its full functionality, environment variables must be set in the same terminal window that 'rails server' is run from. Please contact Alex for the environment variables (or find them in the private note on Piazza).
+
 This project is an party planning app for families or small groups of friends who are all pitching in to make the event happen.
+
 ## Resources
 
 ### Guests

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+</head>
+<body>
+<h1 id="finalprojectmilestone1">Final Project Milestone #1</h1>
+
+<h1 id="notice:thisappfunctionsthroughtheuseoftwiliosmsphoneservices.inordertoruntheapplocallywithitsfullfunctionalityenvironmentvariablesmustbesetinthesameterminalwindowthatrailsserverisrunfrom.pleasecontactalexfortheenvironmentvariablesorfindthemintheprivatenoteonpiazza.">NOTICE: This app functions through the use of Twilio SMS/phone services. In order to run the app locally with its full functionality, environment variables must be set in the same terminal window that &#8216;rails server&#8217; is run from. Please contact Alex for the environment variables (or find them in the private note on Piazza).</h1>
+
+<p>This project is an party planning app for families or small groups of friends who are all pitching in to make the event happen.</p>
+
+<h2 id="resources">Resources</h2>
+
+<h3 id="guests">Guests</h3>
+
+<p>The app will have the ability to invite Guests through use of email or text message, and track their response either through text message or use of the online app. If the Guest chooses to create a User account (or already has one), they can log in or create a username and password to associate their User account with their Guest status. Users and Guests have a one-to-one relationship.</p>
+
+<h3 id="invitations">Invitations</h3>
+
+<p>Invitations will track the many-to-many relationship between Guests and Events.</p>
+
+<h3 id="events">Events</h3>
+
+<p>Events can be created by a User, and possess a title, date, an image, and Event details, as well as a budget to compare to Supplies.</p>
+
+<h3 id="lists">Lists</h3>
+
+<p>Lists are to-do lists of Tasks (see next) for a specific event. The User who has created the Event can assign Guests to help with certain to-do Tasks, or invite Guests to choose which Tasks they would like to volunteer for.</p>
+
+<h3 id="tasks">Tasks</h3>
+
+<p>Tasks are associated with a single List (which is associated with a single Event). They can have a due date, a tag (to group similar tasks), a Guest who is assigned to the Task, and can keep track of whether the Task has been completed.</p>
+
+<h3 id="supplies">Supplies</h3>
+
+<p>Supplies are items needed to make the Event happen. They can have a title, a price, and the id of a guest that they are assigned to, plus a link to an outside site to purchase. They also keep track of whether or not they have been purchased.</p>
+
+</body>
+</html>
