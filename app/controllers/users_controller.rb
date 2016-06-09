@@ -10,6 +10,7 @@ class UsersController < ApplicationController
     user.email = params[:user][:email]
     user.password = params[:user][:password]
     user.save
+    user.password_confirmation = params[:user][:password_confirmation]
 
     guest = Guest.new
     guest.user_id = user.id
@@ -20,9 +21,14 @@ class UsersController < ApplicationController
     guest.save
 
     user.guest_id = guest.id
-    user.save
 
-    redirect_to login_path
+    if user.save and guest.save
+      redirect_to login_path
+    else
+      @user = User.new
+      @guest = Guest.new
+      redirect_to new_user_path, notice: "Something went wrong! Please be sure to fill all fields and enter correct phone number and password confirmation."
+    end
   end
 
   def destroy

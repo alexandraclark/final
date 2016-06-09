@@ -7,7 +7,9 @@
 <div class="row container">
 <div class="event-details">
   <div class="row">
+  <% if !@event.image_url.empty? %> 
   <%= image_tag @event.image_url, size: "200", class: "event-image" %>
+  <% end %>
 
   <div class="event-specs">
     <p>Budget: $<%= @event.budget %></p>
