@@ -25,10 +25,9 @@ class TwilioController < ApplicationController
     if message[0] == "YES" and @guest and @event
       @invite = Invitation.find_by(:event_id => @event.id, :guest_id => @guest.id)
       if @invite
-          @invite.RSVP = true
-          @invite.attending = true
-          @invite.save
-        end
+        @invite.RSVP = true
+        @invite.attending = true
+        @invite.save
       end
     elsif message[0] == "NO" and @guest and @event
       @invite = Invitation.find_by(:event_id => @event.id, :guest_id => @guest.id)
@@ -36,7 +35,6 @@ class TwilioController < ApplicationController
           @invite.RSVP = true
           @invite.attending = false
           @invite.save
-        end
       end
     end
 
