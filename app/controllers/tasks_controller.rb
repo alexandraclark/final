@@ -40,9 +40,11 @@ class TasksController < ApplicationController
   def update
     @task = Task.find(params[:id])
 
-    if params[:task][:if_patch]
+    if !(params[:task][:if_patch].nil?)
       @task.item = params[:task][:item]
-      @task.due_date = params[:task][:due_date]
+      if !@task.due_date.nil?
+        @task.due_date = params[:task][:due_date]
+      end
       @task.tag = params[:task][:tag]
       @task.guest_id = params[:task][:guest_id]
     end
@@ -53,7 +55,14 @@ class TasksController < ApplicationController
       @task.update(completed: false)
     end
 
-    redirect_to tasks_url
+    if @task.save and !(params[:task][:if_patch].nil?)
+      redirect_to tasks_url
+    elsif @task.save
+      redirect_to :back
+    else
+      render :edit
+    end
+
   end
 
   def create

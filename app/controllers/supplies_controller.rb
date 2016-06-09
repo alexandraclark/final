@@ -34,6 +34,7 @@ class SuppliesController < ApplicationController
 
   def update
     @supply = Supply.find(params[:id])
+    @event = Event.find_by(id: @supply.event_id)
 
     if params[:supply][:purchased] == "1"
       @supply.update(purchased: true)
@@ -41,7 +42,7 @@ class SuppliesController < ApplicationController
       @supply.update(purchased: false)
     end
 
-    if params[:supply][:if_patch]
+    if !(params[:supply][:if_patch].nil?)
       @supply.title = params[:supply][:title]
       @supply.quantity = params[:supply][:quantity]
       @supply.price = params[:supply][:price]
@@ -50,8 +51,10 @@ class SuppliesController < ApplicationController
       @supply.purchased = params[:supply][:purchased]
     end
 
-    if @supply.save
+    if @supply.save and !(params[:supply][:if_patch].nil?)
       redirect_to supplies_url
+    elsif @supply.save
+      redirect_to :back
     else
       render :edit
     end
