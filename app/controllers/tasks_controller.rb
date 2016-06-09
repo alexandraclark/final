@@ -60,7 +60,9 @@ class TasksController < ApplicationController
     @task = Task.new
     @task.list_id = params[:task][:list_id]
     @task.item = params[:task][:item]
-    @task.due_date = params[:task][:due_date]
+    if !params[:task][:due_date].empty?
+      @task.due_date = params[:task][:due_date]
+    end
     @task.tag = params[:task][:tag]
     @task.guest_id = params[:task][:guest_id]
     @task.completed = false
@@ -68,6 +70,10 @@ class TasksController < ApplicationController
     if @task.save
       redirect_to tasks_url, notice: "Task added!"
     else
+      find_guests
+      @event = Event.find_by(:id => params[:task][:event_id]).title
+      list = List.find_by(:id => params[:task][:list_id]).event_id
+      params[:event_id] = Event.find_by(id: list)
       render 'new'
     end
   end

@@ -76,6 +76,9 @@ class SuppliesController < ApplicationController
     if @supply.save
       redirect_to supplies_url, notice: "Supply added!"
     else
+      find_guests
+      @event = Event.find_by(:id => params[:supply][:event_id]).title
+      params[:event_id] = params[:supply][:event_id]
       render 'new'
     end
   end
@@ -83,20 +86,6 @@ class SuppliesController < ApplicationController
   def edit
     @supply = Supply.find_by(id: params[:id])
   end
-
-  # def update
-  #   @supply = Supply.find(params[:id])
-  #
-  #
-  #
-  #   if params[:supply][:purchased] == "1"
-  #     @supply.update(purchased: true)
-  #   else
-  #     @supply.update(purchased: false)
-  #   end
-  #
-  #   redirect_to supplies_url
-  # end
 
   def destroy
     supply = Supply.find_by(id: params[:id])

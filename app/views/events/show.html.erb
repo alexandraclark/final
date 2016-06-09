@@ -46,5 +46,16 @@
 <h3>Tasks</h3>
 <hr>
 <%= render partial: 'tasks/task', collection: @event.tasks, as: :task %>
+<%= link_to "+ add a new task", new_task_path(:event => @event.title, :event_id => @event.id) %>
 </div>
 </div>
+
+<div class="row">
+<div class="supply-tasks col-md-6 col-md-offset-6">
+  <h3>Supplies</h3>
+  <hr>
+  <%= render partial: 'supplies/supply', collection: @event.supplies, as: :supply %>
+  <%= link_to "+ add a new supply", new_supply_path(:event => @event.title, :event_id => @event.id) %>
+</div>
+</div>
+<br><br>
