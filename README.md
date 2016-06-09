@@ -8,6 +8,8 @@ The finished app is deployed here: https://limitless-plains-54750.herokuapp.com/
 
 You can create a new account/events/etc. from scratch, or login with one of the predefined accounts from the seed file.
 
+Right now, there is only one User per event(s), who is the event creator. In the future, I'd like to make it so that invited Guests receive a unique signup link and can become Users in their own right, with a new account that is tied to their Guest info and Invitations.
+
 ## Resources
 
 ### Guests
